@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Check } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 interface PricingTierProps {
     name: string
@@ -24,34 +25,83 @@ function PricingTier({
 }: PricingTierProps) {
     return (
         <motion.div
-            className={`rounded-lg border transition-all duration-300 ${
+            className={cn(
+                'rounded-lg border transition-all duration-300 p-6 cursor-pointer',
                 isActive
-                    ? 'border-primary border-2 bg-card shadow-lg'
+                    ? 'bg-primary text-primary-foreground border-primary border-2 shadow-lg'
                     : 'border-border bg-card hover:border-primary/30'
-            } p-6 cursor-pointer`}
+            )}
             whileHover={{ y: -5 }}
             transition={{ type: 'spring', stiffness: 300 }}
             onClick={onSelect}
         >
-            <h3 className="text-2xl font-bold">{name}</h3>
+            <h3
+                className={cn(
+                    'text-2xl font-bold',
+                    isActive && 'text-primary-foreground'
+                )}
+            >
+                {name}
+            </h3>
             <div className="mt-4 flex items-baseline">
-                <span className="text-4xl font-extrabold">{price}</span>
-                <span className="ml-1 text-muted-foreground">/month</span>
+                <span
+                    className={cn(
+                        'text-4xl font-extrabold',
+                        isActive && 'text-primary-foreground'
+                    )}
+                >
+                    {price}
+                </span>
+                <span
+                    className={cn(
+                        'ml-1',
+                        isActive
+                            ? 'text-primary-foreground/70'
+                            : 'text-muted-foreground'
+                    )}
+                >
+                    /month
+                </span>
             </div>
-            <p className="mt-4 text-muted-foreground">{description}</p>
+            <p
+                className={cn(
+                    'mt-4',
+                    isActive
+                        ? 'text-primary-foreground/80'
+                        : 'text-muted-foreground'
+                )}
+            >
+                {description}
+            </p>
             <ul className="mt-6 space-y-3">
                 {features.map((feature, index) => (
                     <li key={index} className="flex items-center">
                         <Check
-                            className={`mr-2 h-4 w-4 ${isActive ? 'text-primary' : 'text-muted-foreground'}`}
+                            className={cn(
+                                'mr-2 h-4 w-4',
+                                isActive
+                                    ? 'text-primary-foreground'
+                                    : 'text-muted-foreground'
+                            )}
                         />
-                        <span className="text-sm">{feature}</span>
+                        <span
+                            className={cn(
+                                'text-sm',
+                                isActive && 'text-primary-foreground'
+                            )}
+                        >
+                            {feature}
+                        </span>
                     </li>
                 ))}
             </ul>
             <div className="mt-8 block">
                 <Button
-                    className={`w-full transition-all duration-300 ${isActive ? 'shadow-md' : ''}`}
+                    className={cn(
+                        'w-full transition-all duration-300',
+                        isActive &&
+                            'bg-primary-foreground text-primary hover:bg-primary-foreground/90'
+                    )}
                     variant={isActive ? 'default' : 'outline'}
                 >
                     {isActive ? 'Selected Plan' : 'Select Plan'}
@@ -64,7 +114,7 @@ function PricingTier({
                     animate={{ opacity: 1 }}
                     className="absolute -top-3 left-0 right-0 flex justify-center"
                 >
-                    <span className="bg-primary text-primary-foreground text-xs font-medium px-3 py-1 rounded-full shadow-sm">
+                    <span className="bg-primary-foreground text-primary text-xs font-medium px-3 py-1 rounded-full shadow-sm border border-black">
                         Current Selection
                     </span>
                 </motion.div>
@@ -74,7 +124,7 @@ function PricingTier({
 }
 
 export default function Pricing() {
-    const [selectedTier, setSelectedTier] = useState<number | null>(null)
+    const [selectedTier, setSelectedTier] = useState(1)
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -143,7 +193,7 @@ export default function Pricing() {
     ]
 
     const handleSelectTier = (index: number) => {
-        setSelectedTier(index === selectedTier ? null : index)
+        setSelectedTier(selectedTier === index ? index : index)
     }
 
     return (
@@ -173,7 +223,7 @@ export default function Pricing() {
                         variants={containerVariants}
                     >
                         {pricingTiers.map((tier, index) => (
-                            <div key={index} className="relative">
+                            <div key={index} className="relative mt-auto">
                                 <PricingTier
                                     name={tier.name}
                                     price={tier.price}

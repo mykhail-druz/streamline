@@ -1,11 +1,19 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
+import { useRef } from 'react'
 
 export default function Hero() {
+    const heroRef = useRef(null)
+    const { scrollYProgress } = useScroll({
+        target: heroRef,
+        offset: ['start end', 'end start'],
+    })
+    const translateY = useTransform(scrollYProgress, [0.5, 1], [-50, 300])
+
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -29,10 +37,43 @@ export default function Hero() {
     }
 
     return (
-        <section className="relative overflow-hidden py-20 md:py-32">
+        <section
+            ref={heroRef}
+            className="relative overflow-hidden py-20 md:py-32"
+        >
             <div className="container px-4 md:px-6">
+                {/* Top-left decorative cube */}
                 <motion.div
-                    className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-[1fr_600px]"
+                    className="absolute hidden md:block top-10 -left-20 z-1 "
+                    style={{
+                        translateY: translateY,
+                    }}
+                >
+                    <Image
+                        src="/chrome-shape-1.png"
+                        alt="Decorative Cube"
+                        width={200}
+                        height={200}
+                    />
+                </motion.div>
+
+                {/* Bottom-right decorative cube */}
+                <motion.div
+                    className="absolute hidden md:block bottom-10 -right-20 z-1 "
+                    style={{
+                        translateY: translateY,
+                    }}
+                >
+                    <Image
+                        src="/chrome-shape-2.png"
+                        alt="Decorative Cube"
+                        width={200}
+                        height={200}
+                    />
+                </motion.div>
+
+                <motion.div
+                    className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-[1fr_600px] relative z-10"
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"

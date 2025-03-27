@@ -25,32 +25,4 @@ const nextConfig = {
     },
 }
 
-let userConfig = undefined
-try {
-    userConfig = await import('./v0-user-next.config')
-    mergeConfig(nextConfig, userConfig.default || userConfig)
-} catch (e) {
-    // ignore error
-}
-
-function mergeConfig(nextConfig, userConfig) {
-    if (!userConfig) {
-        return
-    }
-
-    for (const key in userConfig) {
-        if (
-            typeof nextConfig[key] === 'object' &&
-            !Array.isArray(nextConfig[key])
-        ) {
-            nextConfig[key] = {
-                ...nextConfig[key],
-                ...userConfig[key],
-            }
-        } else {
-            nextConfig[key] = userConfig[key]
-        }
-    }
-}
-
 export default nextConfig
