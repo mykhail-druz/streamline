@@ -96,3 +96,94 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.tag {
+  @apply inline-block rounded-lg px-3 py-1 text-sm text-white
+  transition-all duration-300 ease-in-out
+  cursor-pointer relative overflow-hidden;
+
+  /* Фиолетовый градиент в стиле куба */
+  background: linear-gradient(45deg, #8a4fff, #6a3acd, #5127a0);
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease infinite;
+  box-shadow: 0 4px 15px rgba(138, 79, 255, 0.3);
+}
+
+.tag:hover {
+  @apply scale-105 shadow-lg;
+  animation: gradientShift 2s ease infinite;
+  background: linear-gradient(45deg, #6a3acd, #8a4fff, #5127a0);
+}
+
+/* Анимация переливающегося градиента */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Альтернативный вариант с более мягким эффектом */
+.tag-soft {
+  @apply inline-block rounded-lg px-3 py-1 text-sm text-white
+  transition-all duration-300 ease-in-out
+  cursor-pointer relative overflow-hidden;
+
+  background: linear-gradient(45deg, #6366f1, #3b82f6);
+  background-size: 200% 200%;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.tag-soft:hover {
+  @apply scale-105;
+  background-position: right center;
+  box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+/* Вариант с неоновым свечением */
+.tag-neon {
+  @apply inline-block rounded-lg px-3 py-1 text-sm text-white
+  transition-all duration-300 ease-in-out
+  cursor-pointer relative;
+
+  background: linear-gradient(45deg, #6366f1, #3b82f6);
+  box-shadow:
+          0 0 10px #6366f1,
+          0 0 20px #3b82f6,
+          0 0 40px #10b981;
+  animation: neonPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+  from {
+    box-shadow:
+            0 0 10px #6366f1,
+            0 0 20px #3b82f6,
+            0 0 40px #10b981;
+  }
+  to {
+    box-shadow:
+            0 0 20px #6366f1,
+            0 0 40px #3b82f6,
+            0 0 80px #10b981;
+  }
+}
+
+.section-title-block {
+  @apply space-y-4;
+}
+
+.section-title {
+  @apply text-3xl font-bold tracking-tighter sm:text-5xl
+  bg-gradient-to-r from-black to-[#8a4fff]
+  text-transparent bg-clip-text
+  animate-gradient-x
+
+  bg-[length:400%_400%] /* Увеличьте размер */
+}

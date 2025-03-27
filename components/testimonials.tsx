@@ -1,146 +1,220 @@
 'use client'
 
+import React from 'react'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 
-interface TestimonialProps {
-    quote: string
-    author: string
-    role: string
-    company: string
-    avatar: string
-}
+const testimonials = [
+    {
+        text: "StreamLine transformed our team's collaboration, making remote work feel seamless and intuitive.",
+        imageSrc: '/avatar-1.webp',
+        name: 'John Rodriguez',
+        username: '@john_tech',
+    },
+    {
+        text: 'The analytics and project tracking features have been game-changing for our productivity.',
+        imageSrc: '/avatar-2.webp',
+        name: 'Marcus Chen',
+        username: '@marcus_innovate',
+    },
+    {
+        text: 'Incredibly user-friendly interface that adapts to our complex workflow needs.',
+        imageSrc: '/avatar-3.webp',
+        name: 'Sarah Thompson',
+        username: '@sarah_pm',
+    },
+    {
+        text: "We've seen a 50% improvement in team communication and project delivery speed.",
+        imageSrc: '/avatar-4.webp',
+        name: 'Maggie Kim',
+        username: '@maggie_leadership',
+    },
+    {
+        text: "The real-time collaboration tools are unlike anything we've used before.",
+        imageSrc: '/avatar-5.webp',
+        name: 'Brad Bennett',
+        username: '@brad_global',
+    },
+    {
+        text: 'Perfect blend of simplicity and powerful features for modern teams.',
+        imageSrc: '/avatar-6.webp',
+        name: 'Alex Patel',
+        username: '@alex_strategy',
+    },
+    {
+        text: 'The integration capabilities have completely streamlined our cross-departmental workflows.',
+        imageSrc: '/avatar-7.webp',
+        name: 'Lizzie Green',
+        username: '@lizzie_ops',
+    },
+    {
+        text: 'Exceptional customer support that goes above and beyond. They truly understand our business needs.',
+        imageSrc: '/avatar-8.webp',
+        name: 'Sofia Harrison',
+        username: '@sofia_enterprise',
+    },
+    {
+        text: 'A game-changing platform that has redefined how we approach project management and team collaboration.',
+        imageSrc: '/avatar-9.webp',
+        name: 'Tom Martinez',
+        username: '@tom_digital',
+    },
+]
 
-function Testimonial({
-    quote,
-    author,
-    role,
-    company,
-    avatar,
-}: TestimonialProps) {
-    return (
+const TestimonialsColumn = (props: {
+    className?: string
+    testimonials: typeof testimonials
+    duration?: number
+    style?: React.CSSProperties
+}) => (
+    <div
+        style={{
+            width: '100%',
+            maxWidth: '300px',
+            overflow: 'hidden',
+            ...(props.style || {}),
+            ...(props.className ? {} : {}),
+        }}
+    >
         <motion.div
-            className="rounded-lg border bg-card p-6 shadow-sm"
-            whileHover={{ y: -5 }}
-            transition={{ type: 'spring', stiffness: 300 }}
+            animate={{
+                translateY: '-50%',
+            }}
+            transition={{
+                repeat: Infinity,
+                ease: 'linear',
+                repeatType: 'loop',
+                duration: props.duration || 15,
+            }}
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1.5rem',
+                paddingBottom: '1.5rem',
+            }}
         >
-            <div className="flex flex-col space-y-4">
-                <div className="flex items-center space-x-4">
-                    <div className="h-10 w-10 rounded-full bg-muted overflow-hidden">
-                        <Image
-                            src={avatar}
-                            alt={author}
-                            width={40}
-                            height={40}
-                        />
-                    </div>
-                    <div>
-                        <p className="text-sm font-medium">{author}</p>
-                        <p className="text-xs text-muted-foreground">
-                            {role}, {company}
-                        </p>
-                    </div>
-                </div>
-                <p className="text-muted-foreground italic">"{quote}"</p>
-            </div>
+            {[...new Array(2)].fill(0).map((_, index) => (
+                <React.Fragment key={index}>
+                    {props.testimonials.map(
+                        ({ text, imageSrc, name, username }) => (
+                            <div
+                                key={username}
+                                style={{
+                                    backgroundColor: 'white',
+                                    border: '1px solid #e5e7eb',
+                                    borderRadius: '0.5rem',
+                                    padding: '1.25rem',
+                                    boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
+                                    transition: 'box-shadow 0.3s ease',
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '0.75rem',
+                                    }}
+                                >
+                                    <img
+                                        src={imageSrc}
+                                        alt={name}
+                                        style={{
+                                            width: '44px',
+                                            height: '44px',
+                                            borderRadius: '9999px',
+                                            objectFit: 'cover',
+                                        }}
+                                    />
+                                    <div>
+                                        <div
+                                            style={{
+                                                fontWeight: 600,
+                                                color: '#1f2937',
+                                            }}
+                                        >
+                                            {name}
+                                        </div>
+                                        <div
+                                            style={{
+                                                fontSize: '0.875rem',
+                                                color: '#6b7280',
+                                            }}
+                                        >
+                                            {username}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    style={{
+                                        color: '#4b5563',
+                                        fontStyle: 'italic',
+                                        marginTop: '1rem',
+                                    }}
+                                >
+                                    "{text}"
+                                </div>
+                            </div>
+                        )
+                    )}
+                </React.Fragment>
+            ))}
         </motion.div>
-    )
-}
+    </div>
+)
 
-export default function Testimonials() {
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2,
-                delayChildren: 0.3,
-            },
-        },
-    }
-
-    const itemVariants = {
-        hidden: { y: 20, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                type: 'spring',
-                stiffness: 100,
-            },
-        },
-    }
-
-    const testimonials = [
-        {
-            quote: "The customer support is exceptional. Any time we've had questions, the StreamLine team has been quick to respond and incredibly helpful.",
-            author: 'David Kim',
-            role: 'Operations Director',
-            company: 'Global Solutions',
-            avatar: '/avatar-5.webp',
-        },
-        {
-            quote: 'The analytics features are incredible. We can now make data-driven decisions that have significantly improved our project outcomes.',
-            author: 'Michael Chen',
-            role: 'CTO',
-            company: 'Innovate Inc.',
-            avatar: '/avatar-6.webp',
-        },
-        {
-            quote: 'As a remote team, StreamLine has been a game-changer for us. The real-time collaboration tools keep everyone on the same page.',
-            author: 'Emily Rodriguez',
-            role: 'Team Lead',
-            company: 'Remote Works',
-            avatar: '/avatar-7.webp',
-        },
-        {
-            quote: "StreamLine has completely transformed how our team collaborates. We've seen a 40% increase in productivity since implementing it.",
-            author: 'Sarah Johnson',
-            role: 'Product Manager',
-            company: 'TechCorp',
-            avatar: '/avatar-8.webp',
-        },
-    ]
+export const TestimonialsSection = () => {
+    // Split testimonials into columns based on screen size
+    const firstColumn = testimonials.slice(0, 3)
+    const secondColumn = testimonials.slice(3, 6)
+    const thirdColumn = testimonials.slice(6, 9)
 
     return (
-        <section id="testimonials" className="py-20">
-            <div className="container px-4 md:px-6">
-                <motion.div
-                    className="flex flex-col items-center justify-center space-y-4 text-center"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: '-100px' }}
-                    variants={containerVariants}
+        <section
+            id="testimonials"
+            style={{
+                backgroundColor: '#f9fafb',
+                padding: '4rem 0',
+            }}
+        >
+            <div className="max-w-[1200px] mx-auto px-4 flex flex-col items-center text-center relative z-10">
+                <div className="section-title-block">
+                    <div className="tag">Testimonials</div>
+                    <h2 className="section-title">What Our Users Say</h2>
+                    <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                        Discover how StreamLine is revolutionizing team
+                        collaboration and productivity across industries.
+                    </p>
+                </div>
+
+                <div
+                    style={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        justifyContent: 'center',
+                        gap: '1.5rem',
+                        overflow: 'hidden',
+                        maxHeight: '738px',
+                        WebkitMaskImage:
+                            'linear-gradient(to bottom, transparent, black 25%, black 75%, transparent)',
+                    }}
                 >
-                    <motion.div className="space-y-2" variants={itemVariants}>
-                        <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
-                            Testimonials
-                        </div>
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                            Trusted by Teams Worldwide
-                        </h2>
-                        <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                            Don't just take our word for it. Here's what our
-                            customers have to say about StreamLine.
-                        </p>
-                    </motion.div>
-                    <motion.div
-                        className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 mt-8"
-                        variants={containerVariants}
-                    >
-                        {testimonials.map((testimonial, index) => (
-                            <Testimonial
-                                key={index}
-                                quote={testimonial.quote}
-                                author={testimonial.author}
-                                role={testimonial.role}
-                                company={testimonial.company}
-                                avatar={testimonial.avatar}
-                            />
-                        ))}
-                    </motion.div>
-                </motion.div>
+                    <TestimonialsColumn
+                        testimonials={firstColumn}
+                        duration={15}
+                    />
+                    <TestimonialsColumn
+                        testimonials={secondColumn}
+                        duration={19}
+                        className="hidden md:block"
+                    />
+                    <TestimonialsColumn
+                        testimonials={thirdColumn}
+                        duration={17}
+                        className="hidden lg:block"
+                    />
+                </div>
             </div>
         </section>
     )
 }
+
+export default TestimonialsSection

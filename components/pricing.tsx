@@ -206,13 +206,12 @@ export default function Pricing() {
                     viewport={{ once: true, margin: '-100px' }}
                     variants={containerVariants}
                 >
-                    <motion.div className="space-y-2" variants={itemVariants}>
-                        <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
-                            Pricing
-                        </div>
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                            Choose Your Plan
-                        </h2>
+                    <motion.div
+                        className="section-title-block"
+                        variants={itemVariants}
+                    >
+                        <div className="tag">Pricing</div>
+                        <h2 className="section-title">Choose Your Plan</h2>
                         <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                             Select the perfect plan for your needs. All plans
                             include a 14-day free trial.

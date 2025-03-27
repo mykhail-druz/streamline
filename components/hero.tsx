@@ -42,36 +42,6 @@ export default function Hero() {
             className="relative overflow-hidden py-20 md:py-32"
         >
             <div className="container px-4 md:px-6">
-                {/* Top-left decorative cube */}
-                <motion.div
-                    className="absolute hidden md:block top-10 -left-20 z-1 "
-                    style={{
-                        translateY: translateY,
-                    }}
-                >
-                    <Image
-                        src="/chrome-shape-1.png"
-                        alt="Decorative Cube"
-                        width={200}
-                        height={200}
-                    />
-                </motion.div>
-
-                {/* Bottom-right decorative cube */}
-                <motion.div
-                    className="absolute hidden md:block bottom-10 -right-20 z-1 "
-                    style={{
-                        translateY: translateY,
-                    }}
-                >
-                    <Image
-                        src="/chrome-shape-2.png"
-                        alt="Decorative Cube"
-                        width={200}
-                        height={200}
-                    />
-                </motion.div>
-
                 <motion.div
                     className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-[1fr_600px] relative z-10"
                     variants={containerVariants}
@@ -84,7 +54,7 @@ export default function Hero() {
                     >
                         <div className="space-y-2">
                             <motion.h1
-                                className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
+                                className="text-4xl sm:text-5xl xl:text-6xl/none section-title"
                                 variants={itemVariants}
                             >
                                 Simplify Your Workflow with StreamLine
@@ -99,10 +69,10 @@ export default function Hero() {
                             </motion.p>
                         </div>
                         <motion.div
-                            className="flex flex-col gap-2 min-[400px]:flex-row"
+                            className="flex flex-row gap-2"
                             variants={itemVariants}
                         >
-                            <Link href="/signup">
+                            <Link href="/">
                                 <Button size="lg" className="px-8">
                                     Start Free Trial
                                 </Button>
@@ -141,25 +111,53 @@ export default function Hero() {
                             </div>
                         </motion.div>
                     </motion.div>
-                    <motion.div
-                        className="mx-auto"
-                        animate={{
-                            translateY: [-15, 15],
-                        }}
-                        transition={{
-                            repeat: Infinity,
-                            repeatType: 'mirror',
-                            duration: 2,
-                            ease: 'easeInOut',
-                        }}
-                    >
-                        <Image
-                            src="hero-cube.png"
-                            alt="Dashboard Preview"
-                            width={450}
-                            height={450}
-                        />
-                    </motion.div>
+                    <div className="relative mx-auto overflow-visible">
+                        <motion.div
+                            className="absolute hidden md:block xl:-top-10 3xl:-top-20 -left-40 z-1 "
+                            style={{
+                                translateY: translateY,
+                            }}
+                        >
+                            <Image
+                                src="/chrome-shape-1.png"
+                                alt="Decorative Cube"
+                                width={200}
+                                height={200}
+                            />
+                        </motion.div>
+                        <motion.div
+                            animate={{
+                                translateY: [-15, 15],
+                            }}
+                            transition={{
+                                repeat: Infinity,
+                                repeatType: 'mirror',
+                                duration: 2,
+                                ease: 'easeInOut',
+                            }}
+                        >
+                            <Image
+                                src="hero-cube.png"
+                                alt="Dashboard Preview"
+                                width={450}
+                                height={450}
+                            />
+                        </motion.div>
+
+                        <motion.div
+                            className="absolute hidden md:block -bottom-[35%] -right-[45%] z-1 "
+                            style={{
+                                translateY: translateY,
+                            }}
+                        >
+                            <Image
+                                src="/chrome-shape-2.png"
+                                alt="Decorative Cube"
+                                width={200}
+                                height={200}
+                            />
+                        </motion.div>
+                    </div>
                 </motion.div>
             </div>
         </section>

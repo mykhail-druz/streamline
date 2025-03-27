@@ -41,8 +41,14 @@ export default function Footer() {
         >
             <div className="container px-4 md:px-6 py-12">
                 <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
-                    <motion.div className="space-y-4" variants={itemVariants}>
-                        <Link href="/" className="flex items-center">
+                    <motion.div
+                        className="space-y-4 text-center sm:text-start"
+                        variants={itemVariants}
+                    >
+                        <Link
+                            href="/"
+                            className="flex items-center justify-center sm:justify-start"
+                        >
                             <Image
                                 src="logo-rocket.png"
                                 alt="Dashboard Preview"
@@ -58,7 +64,10 @@ export default function Footer() {
                             our all-in-one collaboration platform.
                         </p>
                     </motion.div>
-                    <motion.div className="space-y-4" variants={itemVariants}>
+                    <motion.div
+                        className="space-y-4 text-center sm:text-start"
+                        variants={itemVariants}
+                    >
                         <h3 className="text-sm font-medium">Product</h3>
                         <ul className="space-y-2 text-sm">
                             <li>
@@ -79,7 +88,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link
-                                    href="/integrations"
+                                    href="/"
                                     className="text-muted-foreground hover:text-foreground"
                                 >
                                     Integrations
@@ -87,7 +96,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link
-                                    href="/changelog"
+                                    href="/"
                                     className="text-muted-foreground hover:text-foreground"
                                 >
                                     Changelog
@@ -95,12 +104,15 @@ export default function Footer() {
                             </li>
                         </ul>
                     </motion.div>
-                    <motion.div className="space-y-4" variants={itemVariants}>
+                    <motion.div
+                        className="space-y-4 text-center sm:text-start"
+                        variants={itemVariants}
+                    >
                         <h3 className="text-sm font-medium">Company</h3>
                         <ul className="space-y-2 text-sm">
                             <li>
                                 <Link
-                                    href="/about"
+                                    href="/"
                                     className="text-muted-foreground hover:text-foreground"
                                 >
                                     About
@@ -108,7 +120,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link
-                                    href="/blog"
+                                    href="/"
                                     className="text-muted-foreground hover:text-foreground"
                                 >
                                     Blog
@@ -116,7 +128,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link
-                                    href="/careers"
+                                    href="/"
                                     className="text-muted-foreground hover:text-foreground"
                                 >
                                     Careers
@@ -124,7 +136,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link
-                                    href="/contact"
+                                    href="/"
                                     className="text-muted-foreground hover:text-foreground"
                                 >
                                     Contact
@@ -132,12 +144,15 @@ export default function Footer() {
                             </li>
                         </ul>
                     </motion.div>
-                    <motion.div className="space-y-4" variants={itemVariants}>
+                    <motion.div
+                        className="space-y-4 text-center sm:text-start"
+                        variants={itemVariants}
+                    >
                         <h3 className="text-sm font-medium">Resources</h3>
                         <ul className="space-y-2 text-sm">
                             <li>
                                 <Link
-                                    href="/documentation"
+                                    href="/"
                                     className="text-muted-foreground hover:text-foreground"
                                 >
                                     Documentation
@@ -145,7 +160,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link
-                                    href="/guides"
+                                    href="/"
                                     className="text-muted-foreground hover:text-foreground"
                                 >
                                     Guides
@@ -153,7 +168,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link
-                                    href="/tutorials"
+                                    href="/"
                                     className="text-muted-foreground hover:text-foreground"
                                 >
                                     Tutorials
@@ -161,7 +176,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link
-                                    href="/support"
+                                    href="/"
                                     className="text-muted-foreground hover:text-foreground"
                                 >
                                     Support
@@ -169,12 +184,15 @@ export default function Footer() {
                             </li>
                         </ul>
                     </motion.div>
-                    <motion.div className="space-y-4" variants={itemVariants}>
+                    <motion.div
+                        className="space-y-4 text-center sm:text-start"
+                        variants={itemVariants}
+                    >
                         <h3 className="text-sm font-medium">Legal</h3>
                         <ul className="space-y-2 text-sm">
                             <li>
                                 <Link
-                                    href="/privacy"
+                                    href="/"
                                     className="text-muted-foreground hover:text-foreground"
                                 >
                                     Privacy Policy
@@ -182,7 +200,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link
-                                    href="/terms"
+                                    href="/"
                                     className="text-muted-foreground hover:text-foreground"
                                 >
                                     Terms of Service
@@ -190,7 +208,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link
-                                    href="/cookies"
+                                    href="/"
                                     className="text-muted-foreground hover:text-foreground"
                                 >
                                     Cookie Policy

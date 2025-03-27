@@ -75,11 +75,11 @@ export default function Header() {
             {/* Mobile Navigation */}
             <div
                 className={cn(
-                    'md:hidden fixed inset-0 top-16 z-50 bg-white transition-transform duration-300',
+                    'md:hidden fixed inset-0 top-16 z-100 bg-white transition-transform duration-300',
                     isMenuOpen ? 'translate-x-0' : 'translate-x-full'
                 )}
             >
-                <nav className="container flex flex-col gap-6 p-6">
+                <nav className="container flex flex-col gap-6 p-6 bg-white">
                     <Link
                         href="/#features"
                         className="text-lg font-medium hover:text-primary"
@@ -109,12 +109,7 @@ export default function Header() {
                         Contact
                     </Link>
                     <div className="flex flex-col gap-4 mt-4">
-                        <Link href="/auth">
-                            <Button variant="outline" className="w-full">
-                                Log in
-                            </Button>
-                        </Link>
-                        <Link href="/auth">
+                        <Link href="/">
                             <Button className="w-full">Get Started</Button>
                         </Link>
                     </div>
