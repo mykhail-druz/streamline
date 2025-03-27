@@ -5,6 +5,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { useRef } from 'react'
+import RotatingText from '@/components/ui/RotatingText/RotatingText'
+import CountUp from '@/components/ui/CountUp/CountUp'
+import GradientText from '@/components/ui/GradientText/GradientText'
 
 export default function Hero() {
     const heroRef = useRef(null)
@@ -54,11 +57,34 @@ export default function Hero() {
                     >
                         <div className="space-y-2">
                             <motion.h1
-                                className="text-4xl sm:text-5xl xl:text-6xl/none section-title"
+                                className="text-4xl sm:text-5xl xl:text-6xl/none section-title flex flex-col gap-2 w-"
                                 variants={itemVariants}
                             >
-                                Simplify Your Workflow with StreamLine
+                                <span>Simplify Your</span>{' '}
+                                <RotatingText
+                                    texts={[
+                                        'Workflow',
+                                        'Productivity',
+                                        'Collaboration',
+                                        'Projects',
+                                    ]}
+                                    mainClassName="px-2 sm:px-2 md:px-3 bg-[#8a4fff] text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg w-fit"
+                                    staggerFrom={'last'}
+                                    initial={{ y: '100%' }}
+                                    animate={{ y: 0 }}
+                                    exit={{ y: '-120%' }}
+                                    staggerDuration={0.025}
+                                    splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                                    transition={{
+                                        type: 'spring',
+                                        damping: 30,
+                                        stiffness: 400,
+                                    }}
+                                    rotationInterval={3000}
+                                />{' '}
+                                <span> with StreamLine</span>
                             </motion.h1>
+
                             <motion.p
                                 className="max-w-[600px] text-muted-foreground md:text-xl"
                                 variants={itemVariants}
@@ -102,12 +128,30 @@ export default function Hero() {
                                     </div>
                                 ))}
                             </div>
-                            <div className="text-muted-foreground">
+                            <div className="flex flex-row gap-1 items-center justify-center">
                                 Trusted by{' '}
-                                <span className="font-medium text-foreground">
-                                    2,000+
-                                </span>{' '}
-                                teams
+                                <GradientText
+                                    colors={[
+                                        '#8a4fff',
+                                        '#d366ff',
+                                        '#6a5acd',
+                                        '#9932cc',
+                                        '#8a4fff',
+                                    ]}
+                                    animationSpeed={3}
+                                    showBorder={false}
+                                    className="custom-class"
+                                >
+                                    <CountUp
+                                        from={0}
+                                        to={2000}
+                                        separator=","
+                                        direction="up"
+                                        duration={1}
+                                        className="count-up-text"
+                                    />
+                                </GradientText>
+                                + teams
                             </div>
                         </motion.div>
                     </motion.div>
