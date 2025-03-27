@@ -64,15 +64,19 @@ const TestimonialsColumn = (props: {
     className?: string
     testimonials: typeof testimonials
     duration?: number
-    style?: React.CSSProperties
 }) => (
-    <div
-        style={{
-            width: '100%',
-            maxWidth: '300px',
-            overflow: 'hidden',
-            ...(props.style || {}),
-            ...(props.className ? {} : {}),
+    <motion.div
+        className={`w-full max-w-[300px] overflow-hidden ${props.className || ''}`}
+        variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                    type: 'spring',
+                    stiffness: 100,
+                },
+            },
         }}
     >
         <motion.div
@@ -85,12 +89,7 @@ const TestimonialsColumn = (props: {
                 repeatType: 'loop',
                 duration: props.duration || 15,
             }}
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '1.5rem',
-                paddingBottom: '1.5rem',
-            }}
+            className="flex flex-col gap-6 pb-6"
         >
             {[...new Array(2)].fill(0).map((_, index) => (
                 <React.Fragment key={index}>
@@ -98,58 +97,24 @@ const TestimonialsColumn = (props: {
                         ({ text, imageSrc, name, username }) => (
                             <div
                                 key={username}
-                                style={{
-                                    backgroundColor: 'white',
-                                    border: '1px solid #e5e7eb',
-                                    borderRadius: '0.5rem',
-                                    padding: '1.25rem',
-                                    boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
-                                    transition: 'box-shadow 0.3s ease',
-                                }}
+                                className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm transition-shadow duration-300 hover:shadow-md"
                             >
-                                <div
-                                    style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '0.75rem',
-                                    }}
-                                >
+                                <div className="flex items-center gap-3">
                                     <img
                                         src={imageSrc}
                                         alt={name}
-                                        style={{
-                                            width: '44px',
-                                            height: '44px',
-                                            borderRadius: '9999px',
-                                            objectFit: 'cover',
-                                        }}
+                                        className="w-11 h-11 rounded-full object-cover"
                                     />
                                     <div>
-                                        <div
-                                            style={{
-                                                fontWeight: 600,
-                                                color: '#1f2937',
-                                            }}
-                                        >
+                                        <div className="font-semibold text-gray-800">
                                             {name}
                                         </div>
-                                        <div
-                                            style={{
-                                                fontSize: '0.875rem',
-                                                color: '#6b7280',
-                                            }}
-                                        >
+                                        <div className="text-sm text-gray-500">
                                             {username}
                                         </div>
                                     </div>
                                 </div>
-                                <div
-                                    style={{
-                                        color: '#4b5563',
-                                        fontStyle: 'italic',
-                                        marginTop: '1rem',
-                                    }}
-                                >
+                                <div className="text-gray-700 italic mt-4">
                                     "{text}"
                                 </div>
                             </div>
@@ -158,44 +123,63 @@ const TestimonialsColumn = (props: {
                 </React.Fragment>
             ))}
         </motion.div>
-    </div>
+    </motion.div>
 )
 
 export const TestimonialsSection = () => {
-    // Split testimonials into columns based on screen size
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2,
+                delayChildren: 0.3,
+            },
+        },
+    }
+
     const firstColumn = testimonials.slice(0, 3)
     const secondColumn = testimonials.slice(3, 6)
     const thirdColumn = testimonials.slice(6, 9)
 
     return (
-        <section
-            id="testimonials"
-            style={{
-                backgroundColor: '#f9fafb',
-                padding: '4rem 0',
-            }}
-        >
-            <div className="max-w-[1200px] mx-auto px-4 flex flex-col items-center text-center relative z-10">
-                <div className="section-title-block">
+        <section id="testimonials" className="bg-gray-50 py-16">
+            <motion.div
+                className="max-w-[1200px] mx-auto px-4 flex flex-col items-center text-center relative z-10"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-100px' }}
+                variants={containerVariants}
+            >
+                <motion.div
+                    className="section-title-block"
+                    variants={{
+                        hidden: { opacity: 0, y: 20 },
+                        visible: {
+                            opacity: 1,
+                            y: 0,
+                            transition: {
+                                type: 'spring',
+                                stiffness: 100,
+                            },
+                        },
+                    }}
+                >
                     <div className="tag">Testimonials</div>
                     <h2 className="section-title">What Our Users Say</h2>
                     <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                         Discover how StreamLine is revolutionizing team
                         collaboration and productivity across industries.
                     </p>
-                </div>
+                </motion.div>
 
-                <div
+                <motion.div
+                    className="flex flex-wrap justify-center gap-6 overflow-hidden max-h-[738px]"
                     style={{
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        justifyContent: 'center',
-                        gap: '1.5rem',
-                        overflow: 'hidden',
-                        maxHeight: '738px',
                         WebkitMaskImage:
                             'linear-gradient(to bottom, transparent, black 25%, black 75%, transparent)',
                     }}
+                    variants={containerVariants}
                 >
                     <TestimonialsColumn
                         testimonials={firstColumn}
@@ -211,8 +195,8 @@ export const TestimonialsSection = () => {
                         duration={17}
                         className="hidden lg:block"
                     />
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
         </section>
     )
 }

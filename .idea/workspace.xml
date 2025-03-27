@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2dcc66f1-f79f-46e3-a550-2190ae7c8f1d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/chrome-shape-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/chrome-shape-2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/hero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/pricing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/pricing.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/testimonials.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/testimonials.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +57,7 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Mykhail\Documents\GitHub\streamline\public" />
+      <recent name="C:\Users\Mykhail\Documents\GitHub\streamline\app" />
       <recent name="C:\Users\Mykhail\Documents\GitHub\streamline" />
     </key>
   </component>
@@ -79,6 +78,8 @@
       <updated>1742738846486</updated>
       <workItem from="1742738847648" duration="8755000" />
       <workItem from="1743005351479" duration="5058000" />
+      <workItem from="1743071457674" duration="18198000" />
+      <workItem from="1743103509137" duration="328000" />
     </task>
     <servers />
   </component>
