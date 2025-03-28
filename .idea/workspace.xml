@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2dcc66f1-f79f-46e3-a550-2190ae7c8f1d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/ui/CountUp/CountUp.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/GradientText/GradientText.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/RotatingText/RotatingText.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/hero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +78,8 @@
       <workItem from="1743005351479" duration="5058000" />
       <workItem from="1743071457674" duration="18198000" />
       <workItem from="1743103509137" duration="516000" />
-      <workItem from="1743104419493" duration="2146000" />
+      <workItem from="1743104419493" duration="2190000" />
+      <workItem from="1743161317853" duration="304000" />
     </task>
     <servers />
   </component>
